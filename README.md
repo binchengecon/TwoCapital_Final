@@ -67,8 +67,12 @@
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]] -->
-[Product Name Screen Shot](Project.pdf)
-<embed src="Project.pdf" width="600" height="500" type="application/pdf">
+<!-- ![Product Name Screen Shot](project.png) -->
+
+<div align="center">
+    <img src="project.png" alt="Logo" width="320" height="120">
+</div>
+
 
 
 
