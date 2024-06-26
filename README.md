@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/binchengecon/TwoCapital_Final.git">
-    <img src="mfr.png" alt="Logo" width="320" height="120">
+    <img src="docs/mfr.png" alt="Logo" width="320" height="120">
   </a>
 
   <h2 align="center">Uncertainty, Social Valuation, and Climate Change Policy</h2>
@@ -25,7 +25,7 @@
     Supporter: <a href="https://www.linkedin.com/in/bin-h-cheng/" target="_blank">Bin Cheng</a>
     <br />
     <!-- <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs »</strong></a> <a href="Mitigation.pdf"><strong>View the paper</strong></a> -->
-    <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs</strong></a> · <a href="Mitigation.pdf"><strong>View the paper</strong></a>
+    <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs</strong></a> · <a href="docs/Mitigation.pdf"><strong>View the paper</strong></a>
     <br />
     <br />
     <a href="https://climatesocialpolicy.readthedocs.io/en/latest/">View Project Presentation Website</a>
@@ -69,7 +69,7 @@
 
 
 <div align="center">
-    <img src="project.png" alt="Logo" width="700" height="640" style="max-width: 100%;">
+    <img src="docs/project.png" alt="Logo" width="700" height="640" style="max-width: 100%;">
 </div>
 
 
