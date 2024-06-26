@@ -25,11 +25,9 @@
     Supporter: <a href="https://www.linkedin.com/in/bin-h-cheng/" target="_blank">Bin Cheng</a>
     <br />
     <!-- <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs »</strong></a> <a href="Mitigation.pdf"><strong>View the paper</strong></a> -->
-    <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs</strong></a> · <a href="docs/Mitigation.pdf"><strong>View the paper</strong></a>
+    <a href="https://climatesocialpolicy.readthedocs.io/en/latest/"><strong>Explore the docs</strong></a> · <a href="docs/Mitigation.pdf"><strong>View the paper</strong></a>
     <br />
     <br />
-    <a href="https://climatesocialpolicy.readthedocs.io/en/latest/">View Project Presentation Website</a>
-    ·
     <a href="https://github.com/binchengecon/TwoCapital_Final/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
     <a href="https://github.com/binchengecon/TwoCapital_Final/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
