@@ -22,7 +22,7 @@
   <!-- <h4 align="center">Authors: Michael Barnett, William Brock, Lars Peter Hansen, Hong Zhang</h4> -->
 
   <p align="center">
-    A thorough introduction to replication package supported by Bin Cheng
+    Supporter: Bin Cheng
     <br />
     <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs »</strong></a>
     <br />
@@ -66,14 +66,10 @@
 
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]] -->
-<!-- ![Product Name Screen Shot](project.png) -->
 
 <div align="center">
-    <img src="project.png" alt="Logo" width="320" height="120">
+    <img src="project.png" alt="Logo" width="700" height="640" style="max-width: 100%;">
 </div>
-
-
 
 
 Uncertainty, as it pertains to climate change and other policy challenges, operates through multiple channels.  Such challenges are commonly framed using social valuations such as the social cost of climate change and the social value of research and development. These valuations have contributions that vary across horizons.  
