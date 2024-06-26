@@ -1,0 +1,485 @@
+#! /bin/bash
+
+epsilonarray=(0.1) 
+# epsilonarray=(0.05 0.01 0.005) 
+
+
+# epsilonarray=(0.005) 
+# epsilonarray=(0.004) 
+# epsilonarray=(0.003) 
+# epsilonarray=(0.0025) 
+# epsilonarray=(0.001) 
+# epsilonarray=(0.001) 
+# epsilonarray=(0.005 0.05) 
+# epsilonarray=(0.025) 
+# epsilonarray=(0.01) 
+# epsilonarray=(0.05) 
+
+# task0: try SS=0.1
+# task1: try Y=[1,4], eps=0.005, eps=0.01
+# task2: try Y=[1,4],eps=0.005, eps=0.01, step size =0.1
+
+# python_name="postdamage_2jump_CRS2_delta_rho.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_delta_rho_treat1diff.py" # 3 dmg
+python_name="postdamage_2jump_CRS2_delta_rho_treat1diff_new2.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_delta_rho_treat1diff_new2_withInterp.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_expo.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_Mike.py" # 3 dmg
+# python_name="postdamage_2jump_Short.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_onlydamage.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_onlytech.py" # 3 dmg
+# python_name="postdamage_2jump_CRS2_bothdamagetech.py" # 3 dmg
+
+
+NUM_DAMAGE=20
+# NUM_DAMAGE=10
+# NUM_DAMAGE=3
+# NUM_DAMAGE=4
+
+ID_MAX_DAMAGE=$((NUM_DAMAGE - 1))
+
+# maxiterarr=(80000 200000)
+# maxiterarr=(2000000 1000000)
+# maxiterarr=(2000000 200000)
+maxiterarr=(2000000 30000)
+# maxiterarr=(10 10)
+
+declare -A hXarr1=([0]=0.2 [1]=0.2 [2]=0.2)
+declare -A hXarr2=([0]=0.1 [1]=0.1 [2]=0.1)
+declare -A hXarr3=([0]=0.05 [1]=0.05 [2]=0.025)
+declare -A hXarr4=([0]=0.05 [1]=0.025 [2]=0.025)
+declare -A hXarr5=([0]=0.1 [1]=0.05 [2]=0.05)
+declare -A hXarr6=([0]=0.1 [1]=0.05 [2]=0.025)
+declare -A hXarr7=([0]=0.1 [1]=0.05 [2]=0.01)
+declare -A hXarr8=([0]=0.2 [1]=0.05 [2]=0.05)
+declare -A hXarr9=([0]=0.1 [1]=0.05 [2]=0.010)
+declare -A hXarr10=([0]=0.1 [1]=0.05 [2]=0.005)
+declare -A hXarr11=([0]=0.05 [1]=0.05 [2]=0.010)
+declare -A hXarr12=([0]=0.1 [1]=0.025 [2]=0.010)
+declare -A hXarr13=([0]=0.1 [1]=0.025 [2]=0.025)
+declare -A hXarr14=([0]=0.1 [1]=0.01 [2]=0.025)
+declare -A hXarr15=([0]=0.1 [1]=0.025 [2]=0.01)
+declare -A hXarr16=([0]=0.1 [1]=0.01 [2]=0.01)
+declare -A hXarr17=([0]=0.1 [1]=0.05 [2]=0.025)
+declare -A hXarr18=([0]=0.1 [1]=0.04 [2]=0.010)
+declare -A hXarr19=([0]=0.1 [1]=0.045 [2]=0.010)
+declare -A hXarr20=([0]=0.2 [1]=0.04 [2]=0.01)
+declare -A hXarr21=([0]=0.2 [1]=0.04 [2]=0.02)
+declare -A hXarr22=([0]=0.2 [1]=0.03 [2]=0.02)
+declare -A hXarr23=([0]=0.2 [1]=0.04 [2]=0.05)
+declare -A hXarr24=([0]=0.2 [1]=0.035 [2]=0.05)
+declare -A hXarr25=([0]=0.2 [1]=0.02 [2]=0.05)
+declare -A hXarr26=([0]=0.2 [1]=0.01 [2]=0.05)
+# hXarrays=(hXarr1 hXarr2 hXarr3)
+hXarrays=(hXarr1)
+# hXarrays=(hXarr2)
+# hXarrays=(hXarr4)
+# hXarrays=(hXarr4)
+# hXarrays=(hXarr5)
+# hXarrays=(hXarr6)
+# hXarrays=(hXarr7)
+# hXarrays=(hXarr8)
+# hXarrays=(hXarr10)
+# hXarrays=(hXarr11)
+# hXarrays=(hXarr12)
+# hXarrays=(hXarr13)
+# hXarrays=(hXarr14)
+# hXarrays=(hXarr15)
+# hXarrays=(hXarr16)
+# hXarrays=(hXarr17)
+# hXarrays=(hXarr18)
+# hXarrays=(hXarr19)
+# hXarrays=(hXarr20)
+# hXarrays=(hXarr21)
+# hXarrays=(hXarr22)
+# hXarrays=(hXarr23)
+# hXarrays=(hXarr24)
+# hXarrays=(hXarr25)
+
+
+# Xminarr=(4.00 0.2 1.0 0.2)
+# Xmaxarr=(9.00 4.0 6.0 3.0)
+
+# Xminarr=(6.00 1.0 1.5 1.0)
+# Xmaxarr=(8.00 4.0 5.5 3.0)
+
+Xminarr=(4.00 0.0 1.0 0.0)
+Xmaxarr=(9.00 4.0 6.0 3.0)
+
+# Xminarr=(4.00 1.2 1.0 0.0)
+# Xmaxarr=(9.00 4.0 6.0 3.0)
+
+# Xminarr=(4.00 1.2 1.0 0.0)
+# Xmaxarr=(9.00 4.0 8.0 3.0)
+
+
+# Xminarr=(4.00 1.0 1.0 0.0)
+# Xmaxarr=(9.00 3.0 6.0 3.0)
+
+# Xminarr=(4.00 1.5 1.0 0.0)
+# Xmaxarr=(9.00 2.5 6.0 3.0)
+
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.050 100000. 100000. 100000.)
+# xi_c=(100000. 0.050 100000. 100000.)
+# xi_j=(100000. 100000. 0.050 100000.)
+# xi_d=(100000. 100000. 100000. 0.050)
+# xi_g=(100000. 100000. 0.050 100000.)
+
+
+# xi_a=(100000. 100000. 100000.)
+# xi_k=(0.025  0.050 100000.)
+# xi_c=(0.025  0.050 100000.)
+# xi_j=(0.025  0.050 100000.)
+# xi_d=(0.025  0.050 100000.)
+# xi_g=(0.025  0.050 100000.)
+
+
+# xi_a=(100000. 100000. 100000.)
+# xi_k=(0.005  0.010  0.001)
+# xi_c=(0.005  0.010  0.001)
+# xi_j=(0.005  0.010  0.001)
+# xi_d=(0.005  0.010  0.001)
+# xi_g=(0.005  0.010  0.001)
+
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.005  0.025 0.075 100000.)
+# xi_c=(0.005  0.025 0.075 100000.)
+# xi_j=(0.005  0.025 0.075 100000.)
+# xi_d=(0.005  0.025 0.075 100000.)
+# xi_g=(0.005  0.025 0.075 100000.)
+
+
+# xi_a=(0.00005 0.0001 0.0002 0.0003 0.0004 0.0005 100000.)
+# xi_k=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 0.150)
+# xi_j=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_d=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_g=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+
+
+# xi_a=(0.0008 0.0010 0.0012 0.0014 0.0016 0.0017 0.0018)
+# xi_k=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 0.150)
+# xi_j=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_d=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_g=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+
+
+# xi_a=(0.0008 0.0010 0.0012 0.0014 0.0016 0.0017 0.0018)
+# xi_k=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_j=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_d=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_g=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+
+
+# xi_a=(0.0018 0.0020 0.0023 0.0024 0.0025 0.0026 0.0027)
+# xi_k=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_j=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_d=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_g=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+
+
+
+# xi_a=(0.0027 0.0028 0.0029 0.0030 0.0031 0.0032 0.0033)
+# xi_k=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_j=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_d=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+# xi_g=(0.150 0.150 0.150 0.150 0.150 0.150 0.150)
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(100000. 100000. 100000. 100000.)
+# xi_c=(100000. 100000. 100000. 100000.)
+# xi_j=(0.005  0.010 0.025 0.050)
+# xi_d=(100000. 100000. 100000. 100000.)
+# xi_g=(0.005  0.010 0.025 0.050)
+
+
+# xi_a=(100000. 100000. 100000.)
+# xi_k=(0.075  0.150 100000.)
+# xi_c=(0.075  0.150 100000.)
+# xi_j=(0.075  0.150 100000.)
+# xi_d=(0.075  0.150 100000.)
+# xi_g=(0.075  0.150 100000.)
+
+
+# xi_a=(100000. 100000.)
+# xi_k=(0.075  0.150)
+# xi_c=(0.075  0.150)
+# xi_j=(0.075  0.150)
+# xi_d=(0.075  0.150)
+# xi_g=(0.075  0.150)
+
+# xi_a=(100000.)
+# xi_k=(100000.)
+# xi_c=(100000.)
+# xi_j=(100000.)
+# xi_d=(100000.)
+# xi_g=(100000.)
+
+
+
+# xi_a=(100000. 100000.)
+# xi_k=(0.150 100000.)
+# xi_c=(0.150 100000.)
+# xi_j=(0.150 100000.)
+# xi_d=(0.150 100000.)
+# xi_g=(0.150 100000.)
+
+xi_a=(100000.)
+xi_k=(100000.)
+xi_c=(100000.)
+xi_j=(0.005)
+xi_d=(100000.)
+xi_g=(0.005)
+
+
+# xi_a=(100000.)
+# xi_k=(0.005)
+# xi_c=(0.005)
+# xi_j=(0.005)
+# xi_d=(0.005)
+# xi_g=(0.005)
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.075 100000. 100000. 100000.)
+# xi_c=(100000. 0.075 100000. 100000.)
+# xi_j=(100000. 100000. 0.075 100000.)
+# xi_d=(100000. 100000. 100000. 0.075)
+# xi_g=(100000. 100000. 0.075 100000.)
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.150 100000. 100000. 100000.)
+# xi_c=(100000. 0.150 100000. 100000.)
+# xi_j=(100000. 100000. 0.150 100000.)
+# xi_d=(100000. 100000. 100000. 0.150)
+# xi_g=(100000. 100000. 0.150 100000.)
+
+
+
+
+# xi_a=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_k=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_c=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_j=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+# xi_d=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_g=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+
+
+
+
+
+
+# xi_a=(100000. 100000. 100000. 100000. 100000.)
+# xi_k=(100000. 100000. 100000. 100000. 100000.)
+# xi_c=(100000. 100000. 100000. 100000. 100000.)
+# xi_j=(0.0005 0.0010 0.00125 0.0025 0.002)
+# xi_d=(100000. 100000. 100000. 100000. 100000.)
+# xi_g=(0.0005 0.0010 0.00125 0.0025 0.002)
+
+
+
+# xi_a=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+# xi_k=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+# xi_c=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+# xi_j=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+# xi_d=(0.005 0.010 0.020 0.040 0.080 0.120 0.150)
+# xi_g=(100000. 100000. 100000. 100000. 100000. 100000. 100000.)
+
+
+
+# xi_a=(100000.)
+# xi_k=(100000.)
+# xi_c=(100000.)
+# xi_j=(0.010)
+# xi_d=(100000.)
+# xi_g=(0.010)
+
+# xi_a=(100000.)
+# xi_k=(0.075)
+# xi_c=(100000.)
+# xi_j=(100000.)
+# xi_d=(100000.)
+# xi_g=(100000.)
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.025 100000. 0.025 100000.)
+# xi_c=(100000. 0.025 0.025 100000.)
+# xi_j=(100000. 100000. 100000. 100000.)
+# xi_d=(100000. 100000. 0.025 0.025)
+# xi_g=(100000. 100000. 100000. 100000.)
+
+
+# xi_a=(100000. 100000. 100000. 100000.)
+# xi_k=(0.050 100000. 0.050 100000.)
+# xi_c=(100000. 0.050 0.050 100000.)
+# xi_j=(100000. 100000. 100000. 100000.)
+# xi_d=(100000. 100000. 0.050 0.050)
+# xi_g=(100000. 100000. 100000. 100000.)
+
+varrhoarr=(1120)
+# varrhoarr=(1120000)
+# varrhoarr=(448)
+
+
+
+# rhoarr=(1 1.5)
+# deltaarr=(0.010 0.010)
+
+# rhoarr=(0.66 1 1.5)
+# deltaarr=(0.010 0.010 0.010)
+
+rhoarr=(1)
+deltaarr=(0.010)
+
+# rhoarr=(1)
+# deltaarr=(0.015)
+
+
+# rhoarr=(1 1 1)
+# deltaarr=(0.010 0.020 0.030)
+
+
+# rhoarr=(0.66 1.5)
+# deltaarr=(0.010 0.010)
+
+
+# rhoarr=(1)
+# deltaarr=(0.010)
+
+# rhoarr=(1.5)
+# deltaarr=(0.010)
+
+
+# rhoarr=(0.66)
+# deltaarr=(0.010)
+
+
+LENGTH_rho=$((${#rhoarr[@]} - 1))
+
+psi0arr=(0.105830)
+
+# phi0arr=(0.05 0.1 0.2 0.3 0.4 0.5)
+# phi0arr=(0.05 0.1 0.2 0.5)
+# phi0arr=(0.05 0.1 0.5)
+# phi0arr=(0.1 0.5)
+phi0arr=(0.5)
+# phi0arr=(0.1)
+LENGTH_phi0=$((${#phi0arr[@]} - 1))
+
+
+
+psi1arr=(0.5)
+
+LENGTH_psi=$((${#psi0arr[@]} - 1))
+LENGTH_xi=$((${#xi_a[@]} - 1))
+
+
+hXarr_SG=(0.2 0.2 0.2)
+Xminarr_SG=(4.00 0.0 -5.5 0.0)
+Xmaxarr_SG=(9.00 4.0 0.0 3.0)
+interp_action_name="2jump_step_0.2_0.2_0.2_LR_0.01"
+fstr_SG="NearestNDInterpolator"
+
+
+
+
+for epsilon in ${epsilonarray[@]}; do
+	for hXarri in "${hXarrays[@]}"; do
+        for phi0index in $(seq 0 $LENGTH_phi0); do
+
+		count=0
+		declare -n hXarr="$hXarri"
+
+
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_testlargedelta_phi0_${phi0arr[$phi0index]}_delta_${deltaarr[$k]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_deltarho_phi0_${phi0arr[$phi0index]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_new_deltarho_phi0_${phi0arr[$phi0index]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_testbar_phi0_${phi0arr[$phi0index]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_testalgo_phi0_${phi0arr[$phi0index]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_FK2_phi0_${phi0arr[$phi0index]}"
+		action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_Current_phi0_${phi0arr[$phi0index]}"
+		# action_name="2jump_step_${Xminarr[0]},${Xmaxarr[0]}_${Xminarr[1]},${Xmaxarr[1]}_${Xminarr[2]},${Xmaxarr[2]}_${Xminarr[3]},${Xmaxarr[3]}_SS_${hXarr[0]},${hXarr[1]},${hXarr[2]}_LR_${epsilon}_deltarho_testlargedelta_phi0_${phi0arr[$phi0index]}"
+
+
+		
+		epsilonarr=(0.1 ${epsilon})
+		fractionarr=(0.1 ${epsilon})
+
+		# epsilonarr=(0.1 0.025)
+		# fractionarr=(0.1 0.025)
+
+		# epsilonarr=(0.1 0.01)
+		# fractionarr=(0.1 0.01)
+
+		# i=1
+		for i in $(seq 0 $ID_MAX_DAMAGE); do
+		# for i in $(seq 0 10); do
+			for PSI_0 in ${psi0arr[@]}; do
+				for PSI_1 in ${psi1arr[@]}; do
+					for varrho in ${varrhoarr[@]}; do
+						for j in $(seq 0 $LENGTH_xi); do
+							for k in $(seq 0 $LENGTH_rho); do
+
+								mkdir -p ./job-outs3/${action_name}/Post/xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}/
+
+								if [ -f ./bash/${action_name}/hX_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}_ID_${i}.sh ]; then
+									rm ./bash/${action_name}/hX_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}_ID_${i}.sh
+								fi
+
+								mkdir -p ./bash/${action_name}/
+
+								touch ./bash/${action_name}/hX_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}_ID_${i}.sh
+
+								tee -a ./bash/${action_name}/hX_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}_ID_${i}.sh <<EOF
+#! /bin/bash
+
+######## login
+#SBATCH --job-name=${Xminarr[1]}_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_${rhoarr[$k]}_phi0_${phi0arr[$phi0index]}_${i}_${epsilon}
+#SBATCH --output=./job-outs3/${action_name}/Post/xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}/mercury_post_${i}_subs.out
+#SBATCH --error=./job-outs3/${action_name}/Post/xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}/mercury_post_${i}_subs.err
+
+#SBATCH --account=pi-lhansen
+#SBATCH --partition=standard
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --time=7-00:00:00
+#SBATCH --exclude=mcn53,mcn55,mcn57,mcn08
+
+####### load modules
+module load python/booth/3.8  gcc/9.2.0
+
+echo "\$SLURM_JOB_NAME"
+
+echo "Program starts \$(date)"
+start_time=\$(date +%s)
+# perform a task
+
+python3 -u /home/bcheng4/TwoCapital_Shrink/abatement_UD/$python_name --num_gamma $NUM_DAMAGE --xi_a ${xi_a[$j]} --xi_k ${xi_k[$j]} --xi_c ${xi_c[$j]} --xi_j ${xi_j[$j]}  --xi_d ${xi_d[$j]} --xi_g ${xi_g[$j]}  --epsilonarr ${epsilonarr[@]}  --fractionarr ${fractionarr[@]}   --maxiterarr ${maxiterarr[@]}  --id $i --psi_0 $PSI_0 --psi_1 $PSI_1 --name ${action_name} --hXarr ${hXarr[@]} --Xminarr ${Xminarr[@]} --Xmaxarr ${Xmaxarr[@]}  --varrho ${varrho}  --phi_0 ${phi0arr[$phi0index]}  --rho ${rhoarr[$k]} --delta ${deltaarr[$k]}
+
+echo "Program ends \$(date)"
+end_time=\$(date +%s)
+
+# elapsed time with second resolution
+elapsed=\$((end_time - start_time))
+
+eval "echo Elapsed time: \$(date -ud "@\$elapsed" +'\$((%s/3600/24)) days %H hr %M min %S sec')"
+# echo ${hXarr[@]}
+
+EOF
+									count=$(($count + 1))
+									sbatch ./bash/${action_name}/hX_${hXarr[0]}_xia_${xi_a[$j]}_xik_${xi_k[$j]}_xic_${xi_c[$j]}_xij_${xi_j[$j]}_xid_${xi_d[$j]}_xig_${xi_g[$j]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$k]}_delta_${deltaarr[$k]}_ID_${i}.sh
+								done
+							done
+						done
+					done
+				done
+			done
+		done
+	done
+done
