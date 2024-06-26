@@ -17,10 +17,12 @@
     <img src="mfr.png" alt="Logo" width="320" height="120">
   </a>
 
-  <h3 align="center">Uncertainty, Social Valuation, and Climate Change Policy</h3>
+  <h2 align="center">Uncertainty, Social Valuation, and Climate Change Policy</h2>
+  <h4 align="center">Authors: Michael Barnett, William Brock, Lars Peter Hansen, Hong Zhang</h4>
+  <!-- <h4 align="center">Authors: Michael Barnett, William Brock, Lars Peter Hansen, Hong Zhang</h4> -->
 
   <p align="center">
-    A thorough introduction to replication package
+    A thorough introduction to replication package supported by Bin Cheng
     <br />
     <a href="https://github.com/binchengecon/TwoCapital_Final.git"><strong>Explore the docs »</strong></a>
     <br />
@@ -34,8 +36,43 @@
 </div>
 
 
-# TwoCapital_Final
+<!-- TABLE OF CONTENTS -->
+<!-- <details> -->
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+<!-- </details> -->
 
+
+
+## About The Project
+
+<!-- [![Product Name Screen Shot][product-screenshot]] -->
+[Product Name Screen Shot](Project.pdf)
+
+
+
+Uncertainty, as it pertains to climate change and other policy challenges, operates through multiple channels.  Such challenges are commonly framed using social valuations such as the social cost of climate change and the social value of research and development. These valuations have contributions that vary across horizons.  
+We propose decompositions when the nature of this uncertainty is broadly conceived. By drawing on insights from decision theory, stochastic impulse response theory, and the pricing of uncertain cash flows, we provide novel characterizations. We use these methods to illustrate when and why uncertainty leads to more proactive policy approaches to climate change.
 
 
 
@@ -73,7 +110,7 @@
 [license-url]: https://github.com/binchengecon/TwoCapital_Final/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/bin-h-cheng
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: Project.pdf
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
