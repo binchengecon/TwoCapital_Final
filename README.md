@@ -68,6 +68,7 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]] -->
 [Product Name Screen Shot](Project.pdf)
+<embed src="Project.pdf" width="600" height="500" type="application/pdf">
 
 
 
