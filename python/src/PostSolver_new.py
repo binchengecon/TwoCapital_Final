@@ -7,7 +7,7 @@ sys.path.append("../src/")
 import numpy as np
 import pandas as pd
 # from numba import njit
-from supportfunctions import finiteDiff
+from src.supportfunctions import finiteDiff
 import SolveLinSys
 
 
@@ -82,7 +82,7 @@ def _FOC_update(v0, steps= (), states = (), args=(), controls=(), fraction=0.5):
     ddX3 = finiteDiff_3D(v0,2,2,hX3)
 
 
-    temp = delta * ( (alpha - i_star)   )**(-rho) 
+    temp = delta * ( (alpha - i_star) * np.exp(K_mat) / np.exp(v0)    )**(-rho) * (np.exp(K_mat)/np.exp(v0))
 
     i_new = (1- temp/dK)/kappa
 
@@ -99,10 +99,10 @@ def _FOC_update(v0, steps= (), states = (), args=(), controls=(), fraction=0.5):
     
 
     consumption = alpha - ii 
-    consumption[consumption <= 1e-16] = 1e-16
     
+    temp_recursive = (consumption *np.exp(K_mat)/np.exp(v0))**(1-rho) - 1
     
-    A   = -delta * np.ones_like(K_mat)
+    A   = np.zeros_like(K_mat)
     
     B_1 = mu_k + ii - 0.5 * kappa * ii**2 - 0.5 * sigma_k**2
     B_1 += sigma_k*h_k
@@ -114,7 +114,7 @@ def _FOC_update(v0, steps= (), states = (), args=(), controls=(), fraction=0.5):
     C_2 = np.zeros_like(K_mat)
     C_3 = np.zeros_like(K_mat)
     
-    D = delta * np.log(consumption) + delta * K_mat
+    D = delta / (1-rho) *temp_recursive
      
     D += 1/2 * xi_k * h_k**2
 
@@ -174,24 +174,17 @@ def hjb_post_tech(
     # Initial setup of HJB
     FC_Err   = 1
     epoch    = 0
-    ii_scalar = 0.089998 
-    
-    h_k_scalar = -1/xi_k *sigma_k 
-    consumption = alpha - ii_scalar
-    constant = np.log(consumption) + (mu_k + ii_scalar - 0.5 * kappa * ii_scalar**2 - 0.5 * sigma_k**2 + sigma_k*h_k_scalar)/delta
-
-
 
     if v0 is None:
         # v0 = K_mat + L_mat - np.average(pi_c_o, axis=0) * Y_mat
-        v0 = K_mat + constant
+        v0 = K_mat
         
         
-    i_star = 0.089998*np.ones(K_mat.shape)
+    i_star = np.zeros(K_mat.shape)
 
     if smart_guess:
         v0     = smart_guess["v0"]
-        # i_star = smart_guess["i_star"]
+        i_star = smart_guess["i_star"]
 
             
     
@@ -234,7 +227,6 @@ def hjb_post_tech(
         PDE_Err = np.max(abs(PDE_rhs))
         FC_Err = np.max(abs((out_comp - v0)/ epsilon))
         
-
         if FC_Err < 1.2*tol:
             
             if epoch%100==0:
@@ -251,8 +243,7 @@ def hjb_post_tech(
                 print("Epoch {:d} (PETSc): PDE Error: {:.10f}; False Transient Error: {:.10f}" .format(epoch, PDE_Err, FC_Err))
                 print("Epoch time: {:.4f}".format(time.time() - start_ep))
         elif epoch%10000==0:
-            dX1  = finiteDiff_3D(v0,0,1,hX1) 
-
+            
             print("-----------------------------------")
             print("---------Epoch {}---------------".format(epoch))
             print("-----------------------------------")
@@ -261,7 +252,6 @@ def hjb_post_tech(
             # print("min x: {},\t max x: {}\t".format(xx.min(), xx.max()))
             # print("min h: {},\t max h: {}\t".format(h.min(), h.max()))
             print("min hk: {},\t max hk: {}\t".format(h_k.min(), h_k.max()))
-            print("min dX1: {},\t max dX1: {}\t".format(dX1.min(), dX1.max()))
             # print("min hj: {},\t max hj: {}\t".format(h_j.min(), h_j.max()))
             print("petsc total: {:.3f}s, Residual Norm is {:g}".format((end_ksp - bpoint1),ksp.getResidualNorm()))
             print("Epoch {:d} (PETSc): PDE Error: {:.10f}; False Transient Error: {:.10f}" .format(epoch, PDE_Err, FC_Err))
