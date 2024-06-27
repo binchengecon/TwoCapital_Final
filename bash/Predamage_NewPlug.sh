@@ -4,7 +4,7 @@ actiontime=1
 epsilonarraypost=(0.1) 
 epsilonarraypre=(0.1)
 
-python_name="predamage_2jump_CRS2_delta_rho_treat1diff_new2_NewPlug.py"
+python_name="Predamage_NewPlug.py"
 python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
 output_dir="/scratch/bincheng/"
 NUM_DAMAGE=20

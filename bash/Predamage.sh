@@ -3,7 +3,7 @@
 epsilonarraypost=(0.1) 
 epsilonarraypre=(0.1)
 
-python_name="predamage_2jump_CRS2_delta_rho_treat1diff_new2.py"
+python_name="Predamage.py"
 python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
 output_dir="/scratch/bincheng/"
 

@@ -2,7 +2,7 @@
 
 epsilonarray=(0.1) 
 
-python_name="postdamage_2jump_CRS2_delta_rho_treat1diff_new2.py" 
+python_name="Postdamage.py" 
 python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
 output_dir="/scratch/bincheng/"
 NUM_DAMAGE=20
