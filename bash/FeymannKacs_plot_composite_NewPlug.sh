@@ -99,7 +99,7 @@ phi0arr=(0.5)
 LENGTH_phi0=$((${#phi0arr[@]} - 1))
 
 
-python_name_unit="Result_2jump_UD_simulate_CRS_long_rhodelta3_FKPlot_Withuncertainty_addpartialg_improveM_adddamage_NewPlug_Composite_dt.py"
+python_name_unit="FeymannKacs_plot_NewPlug_Composite.py"
 python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
 output_dir="/scratch/bincheng/"
 

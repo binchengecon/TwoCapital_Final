@@ -3,6 +3,9 @@
 actiontime=1
 epsilonarraypost=(0.1) 
 
+python_name_unit="StocasticTrajectories_plot.py"
+python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
+output_dir="/scratch/bincheng/"
 NUM_DAMAGE=20
 
 declare -A hXarr1=([0]=0.2 [1]=0.2 [2]=0.2)
@@ -67,9 +70,6 @@ deltaarr=(0.010)
 
 LENGTH_rho=$((${#rhoarr[@]} - 1))
 
-python_name_unit="Result_2jump_UD_plot_CRS_long_newlabel_rhodelta3_stoc_MC.py"
-python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
-output_dir="/scratch/bincheng/"
 
 server_name="mercury"
 

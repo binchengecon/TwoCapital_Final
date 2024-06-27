@@ -3,6 +3,10 @@
 # actiontime=1
 epsilonarraypost=(0.1) 
 
+python_name_unit="Result_2jump_UD_simulate_CRS_long_rhodelta3_FKPlot_Withuncertainty_addpartialg_improveM_adddamage.py"
+python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
+output_dir="/scratch/bincheng/"
+
 NUM_DAMAGE=20
 
 declare -A hXarr1=([0]=0.2 [1]=0.2 [2]=0.2)
@@ -73,10 +77,6 @@ phi0arr=(0.5)
 # phi0arr=(0.1)
 LENGTH_phi0=$((${#phi0arr[@]} - 1))
 
-
-python_name_unit="Result_2jump_UD_simulate_CRS_long_rhodelta3_FKPlot_Withuncertainty_addpartialg_improveM_adddamage.py"
-python_dir="/home/bcheng4/TwoCapital_Shrink/abatement_UD"
-output_dir="/scratch/bincheng/"
 
 server_name="mercury"
 
