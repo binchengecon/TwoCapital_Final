@@ -254,9 +254,9 @@ print("After, legend.frameon is: ", plt.rcParams["legend.frameon"])
 print("After, lines.linewidth is: ", plt.rcParams["lines.linewidth"])
 
 
-os.makedirs("./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/", exist_ok=True)
+os.makedirs("./figure/"+args.dataname+"/", exist_ok=True)
 
-Plot_Dir = "./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/"
+Plot_Dir = "./figure/"+args.dataname+"/"
 
 
 def Damage_Intensity(Yt, y_bar_lower=1.5):

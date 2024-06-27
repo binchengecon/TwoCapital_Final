@@ -407,9 +407,9 @@ print("After, legend.frameon is: ", plt.rcParams["legend.frameon"])
 print("After, lines.linewidth is: ", plt.rcParams["lines.linewidth"])
 
 
-os.makedirs("./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/", exist_ok=True)
+os.makedirs("./figure/"+args.dataname+"/", exist_ok=True)
 
-Plot_Dir = "./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/"
+Plot_Dir = "./figure/"+args.dataname+"/"
 
 def model_simulation_generate(xi_a,xi_k,xi_c,xi_j,xi_d,xi_g,psi_0,psi_1,varrho,rho):
 
