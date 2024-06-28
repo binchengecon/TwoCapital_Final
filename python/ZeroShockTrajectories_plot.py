@@ -307,6 +307,7 @@ if len(xicarr)==4 and min(xikarr)==0.005:
 
 if len(xicarr)==3 and min(xikarr)==0.075:
     labellist = ['More Aversion', 'Less Aversion', 'Neutrality']
+    labellist2 = ['More Aversion', 'Less Aversion', 'Neutrality']
     Filename = 'Aversion Intensity'
     # Filename = 'Aversion Intensity_old'
     # Filename = 'Aversion Intensity_onlyj'
