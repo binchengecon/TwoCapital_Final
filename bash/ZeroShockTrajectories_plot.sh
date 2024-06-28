@@ -13,8 +13,8 @@ declare -A hXarr2=([0]=0.1 [1]=0.1 [2]=0.1)
 hXarrays=(hXarr2)
 
 
-# Xminarr=(4.00 0.0 1.0 0.0)
-# Xmaxarr=(9.00 4.0 6.0 3.0)
+Xminarr=(4.00 0.0 1.0 0.0)
+Xmaxarr=(9.00 4.0 6.0 3.0)
 
 
 
@@ -141,7 +141,7 @@ for epsilonpost in ${epsilonarraypost[@]}; do
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
 #SBATCH --time=7-00:00:00
-#SBATCH --exclude=mcn59,mcn57,mcn54,mcn53,mcn52,mcn51,mcn30
+#SBATCH --exclude=mcn59
 
 ####### load modules
 module load python/booth/3.8  gcc/9.2.0
