@@ -86,9 +86,9 @@ fstr_SG="NearestNDInterpolator"
 
 auto=1
 # year=25
-# year=40
+year=40
 # year=130
-year=6000
+# year=6000
 
 
 
