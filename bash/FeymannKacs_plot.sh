@@ -127,7 +127,7 @@ for epsilonpost in ${epsilonarraypost[@]}; do
                         for k in $(seq 0 $LENGTH_scheme); do
 							for kk in $(seq 0 $LENGTH_rho); do
 
-                    mkdir -p ./job-outs4/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/
+                    mkdir -p ./job-outs/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/
 
                     if [ -f ./bash/${action_name}/hX_${hXarr[0]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$kk]}_delta_${deltaarr[$kk]}_Graph.sh ]; then
                         rm ./bash/${action_name}/hX_${hXarr[0]}_PSI0_${PSI_0}_PSI1_${PSI_1}_varrho_${varrho}_rho_${rhoarr[$kk]}_delta_${deltaarr[$kk]}_Graph.sh
@@ -142,8 +142,8 @@ for epsilonpost in ${epsilonarraypost[@]}; do
 
 ######## login 
 #SBATCH --job-name=plot_${year}_${m0_array}
-#SBATCH --output=./job-outs4/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/graph_${python_name_unit}_${year}_${m0_array}_${xi_k[$j]}.out
-#SBATCH --error=./job-outs4/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/graph_${python_name_unit}_${year}_${m0_array}_${xi_k[$j]}.err
+#SBATCH --output=./job-outs/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/graph_${python_name_unit}_${year}_${m0_array}_${xi_k[$j]}.out
+#SBATCH --error=./job-outs/${action_name}/Graph_Simulate_plot/scheme_${scheme_array[$k]}_HJB_${HJBsolution_array[$k]}/graph_${python_name_unit}_${year}_${m0_array}_${xi_k[$j]}.err
 
 #SBATCH --account=pi-lhansen
 #SBATCH --partition=highmem
