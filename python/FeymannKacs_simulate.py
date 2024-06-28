@@ -9,7 +9,7 @@ import pickle
 from datetime import datetime
 from scipy.stats import norm
 from tqdm import tqdm
-from support import *
+from src.support import *
 import argparse
 
 
