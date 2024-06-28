@@ -17,7 +17,6 @@ from matplotlib.backends.backend_pdf import PdfPages
 from src.Utility import finiteDiff_3D
 import os
 import argparse
-import src.ResultSolver_CRS
 import SolveLinSys
 
 
