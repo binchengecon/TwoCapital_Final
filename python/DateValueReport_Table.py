@@ -26,6 +26,7 @@ sys.stdout.flush()
 
 parser = argparse.ArgumentParser(description="xi_r values")
 parser.add_argument("--dataname",type=str)
+parser.add_argument("--outputname",type=str,default="ReplicateSuri")
 parser.add_argument("--pdfname",type=str)
 
 parser.add_argument("--xiaarr",nargs='+', type=float)
@@ -406,13 +407,15 @@ print("After, legend.frameon is: ", plt.rcParams["legend.frameon"])
 print("After, lines.linewidth is: ", plt.rcParams["lines.linewidth"])
 
 
-os.makedirs("./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/", exist_ok=True)
+os.makedirs("./figure/"+args.dataname+"/", exist_ok=True)
 
-Plot_Dir = "./abatement_UD/pdf_2tech/"+args.dataname+"/"+scheme+"_"+HJB_solution+"/"
+Plot_Dir = "./figure/"+args.dataname+"/"
+
 
 def model_simulation_generate(xi_a,xi_k,xi_c,xi_j,xi_d,xi_g,psi_0,psi_1,varrho,rho):
 
-    Output_Dir = "/scratch/bincheng/"
+    # Output_Dir = "/scratch/bincheng/"
+    Output_Dir = args.outputname
     Data_Dir = Output_Dir+"abatement/data_2tech/"+args.dataname+"/"
     # File_Dir = "xi_a_{}_xi_k_{}_xi_c_{}_xi_j_{}_xi_d_{}_xi_g_{}_psi_0_{}_psi_1_{}_varrho_{}_rho_{}_" .format(xi_a,xi_k,xi_c,xi_j,xi_d,xi_g,psi_0,psi_1,varrho,rho)
     File_Dir = "xi_a_{}_xi_k_{}_xi_c_{}_xi_j_{}_xi_d_{}_xi_g_{}_psi_0_{}_psi_1_{}_varrho_{}_rho_{}_delta_{}_" .format(xi_a, xi_k, xi_c, xi_j, xi_d, xi_g, psi_0,psi_1, varrho, rho, delta)
